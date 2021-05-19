@@ -1,4 +1,4 @@
-name: Build_Flux_Folding@Home
+name: Build_Flux_Folding@Home_ARM64
 
 on:
   workflow_dispatch:
@@ -17,8 +17,12 @@ jobs:
           qemu-version: latest
       - name: login to docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      - name: build the image
+      - name: build docker image
         run: |
-          docker buildx build --push \
-            --tag runonflux/folding-at-home:1.0 \
-            --platform linux/arm64 .
+          docker buildx build \
+            --platform linux/arm64 \
+            --output "type=image,push=false" \
+            --tag runonflux/folding-at-home:1.1 --file Dockerfile .
+      - name: Docker Push
+        run: |
+          docker push runonflux/folding-at-home
