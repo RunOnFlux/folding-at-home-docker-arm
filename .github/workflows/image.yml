@@ -25,4 +25,4 @@ jobs:
             --tag runonflux/folding-at-home:1.1 --file Dockerfile .
       - name: Docker Push
         run: |
-          docker push runonflux/folding-at-home
+          docker push runonflux/folding-at-home:1.1
