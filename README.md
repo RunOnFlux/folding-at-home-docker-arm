@@ -18,7 +18,12 @@ The main objective of this project is to make use of as much as resources we hav
 
 My project goal is aiming for Kubernetes deployment with Helm, and any help or suggestions would be very appreciated as I am only just stepping into k8s.
 
-## Deploy container
+![pi-k8s-grafana-folding](https://user-images.githubusercontent.com/76816315/118390925-3a896600-b664-11eb-8223-687aeca7de2f.png)
+
+## Helm Chart Deployment
+https://github.com/beastob/helm-charts/tree/master/foldingathome
+
+## Docker deployment
 ### Pull latest image
 ```shell script
 $ docker pull beastob/foldingathome-arm64
