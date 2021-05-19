@@ -10,7 +10,7 @@ RUN apt update && \
 
 # Install folding@home fahclient
 WORKDIR /root
-RUN curl -O https://download.foldingathome.org/releases/beta/release/fahclient/debian-stable-arm64/v${CLIENT_MAJOR_VERSION}/fahclient_${CLIENT_MAJOR_VERSION}.${CLIENT_MINOR_VERION}_arm64.deb
+RUN curl -O https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-arm64/v${CLIENT_MAJOR_VERSION}/fahclient_${CLIENT_MAJOR_VERSION}.${CLIENT_MINOR_VERION}_arm64.deb
 RUN dpkg -i --force-depends fahclient_${CLIENT_MAJOR_VERSION}.${CLIENT_MINOR_VERION}_arm64.deb
 
 # Copy init config file
@@ -21,15 +21,14 @@ RUN chmod u+x /root/init.sh
 # Multi-stage build to trim down image size #
 #############################################
 FROM debian:stable-slim
-LABEL maintainer="beastob.mark1@gmail.com"
+LABEL maintainer="valter@zel.network"
 
 # Default configuration parameters for folding client
 ENV FOLD_ANON=true \
     FOLD_USER='' \
     FOLD_PASSKEY='' \
     FOLD_TEAM=0 \
-    FOLD_POWER=full \
-    FOLD_ALLOW_IP=''
+    FOLD_POWER=full
 
 RUN apt update
 
