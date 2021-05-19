@@ -12,9 +12,6 @@ cat <<EOF | tee /etc/fahclient/config.xml
   <!-- Folding Slot Configuration -->
   <gpu v='false'/>
 
-  <!-- HTTP Server -->
-  <allow v='127.0.0.1 $FOLD_ALLOW_IP'/>
-
   <!-- Slot Control -->
   <power v='$FOLD_POWER'/>
 
@@ -23,8 +20,9 @@ cat <<EOF | tee /etc/fahclient/config.xml
   <user v='$FOLD_USER'/>
   <team v='$FOLD_TEAM'/>
 
-  <!-- Web Server -->
-  <web-allow v='127.0.0.1 $FOLD_ALLOW_IP'/>
+  <!--  HTTP Server - Web Server -->
+  <allow v='0/0' />
+  <web-allow v='0/0' />
 
   <!-- Folding Slots -->
   <slot id='0' type='CPU'/>
