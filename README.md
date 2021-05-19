@@ -42,7 +42,7 @@ You should now be able to access the web console via `http://<server-ip>:7396`
 ### Deploy container with custom ENV config
 ```shell script
 $ docker run -d -p 7396:7396 --restart=always \
-  -e FOLD_USER=elonmusk -e FOLD_PASSKEY=xxxxxxxxxx -e FOLD_ANON=false -e FOLD_ALLOW_IP='192.168.1.101' \
+  -e FOLD_USER=elonmusk -e FOLD_PASSKEY=xxxxxxxxxx -e FOLD_ANON=false \
   beastob/foldingathome-arm64
 ```
 
@@ -62,9 +62,3 @@ Port number: `7396`
 | FOLD_PASSKEY |   | passkey for your account |
 | FOLD_ANON  | true | contribute as anonymous  |
 | FOLD_POWER  | full  | 'light',"medium','full' - how much CPU power available for fahclient |
-| FOLD_ALLOW_IP  |   |  whitelist IP addresses for accessing the web console  |
-
-## TODO list
-- ~~Trim down container image size~~ (~150MB -> ~90MB)
-- ~~Kubernetes deployment~~
-- ~~Helm chart~~
