@@ -19,5 +19,5 @@ jobs:
       - name: build the image
         run: |
           docker buildx build --push \
-            --tag runonflux/folding-at-home-arm:latest
+            --tag runonflux/folding-at-home-arm:latest \
             --platform linux/arm64 .
