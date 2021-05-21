@@ -7,18 +7,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout code
+      -
+        name: Checkout
         uses: actions/checkout@v2
-      - name: install buildx
+      -
+        name: Set up Docker Buildx
         id: buildx
-        uses: crazy-max/ghaction-docker-buildx@v1
+        uses: crazy-max/ghaction-docker-buildx@v3
         with:
-          context: .
-          version: latest
+          buildx-version: latest
+          qemu-version: latest
       - name: login to docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      - name: build the image
+      - name: build the image and push to dockerhub
         run: |
-          docker buildx build --push \
-            --tag runonflux/folding-at-home-arm:latest \
-            --platform linux/arm64 .
+           docker buildx build \
+            --platform linux/arm64 \
+            --output "type=image,push=true" \
+            --tag runonflux/folding-at-home-arm:latest --file Dockerfile .
