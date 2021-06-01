@@ -19,6 +19,7 @@ cat <<EOF | tee /etc/fahclient/config.xml
   <passkey v='$FOLD_PASSKEY'/>
   <user v='$FOLD_USER'/>
   <team v='$FOLD_TEAM'/>
+  <gui-enabled v='false'/>
 
   <!--  HTTP Server - Web Server -->
   <allow v='0/0' />
